@@ -29,12 +29,24 @@
 // let boolEmpty = Boolean(emptyStr); // Empty string becomes false
 // console.log(boolEmpty)
 
-let score = null
+// let score = null
 
-console.log(score)
+// console.log(score)
 
-let scr = Number(score)  // null becomes 0 if convert to string
+// let scr = Number(score)  // null becomes 0 if convert to string
 
-console.log(scr)
+// console.log(scr)
+
+// let a= '5' -2   //3
+// console.log(a)
+
+// let b= '5' +2   //52
+// console.log(b)
+
+let c =true +3; // true == 1
+console.log(c)
+
+let d= false+5; // false = 0
+console.log(d)
 
 
