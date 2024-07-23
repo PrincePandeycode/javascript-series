@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: blueviolet;
+        }
+        .div1{
+         
+            margin: 30px;
+            padding: 30px;
+
+        }
+
+        .mid{
+            margin-left: 30%;
+            margin-right: 30%;
+            border: 2px solid black;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            font-weight: bolder;
+            font-size: larger;
+            border-radius: 10px;
+
+        }
+
+        #btn{
+            background-color: rgb(88, 26, 130);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Random game</h1></center>
+    <div class="div1">
+
+        <div class="mid" >
+        <p>Random Number: <span id="num"></span></p>
+        <br>
+
+        <label for="guessInput">Enter a number:</label>
+        <input type="number" id="guessInput">
+        <br>
+        <button id="btn" style="margin-top: 40px;">Check Guess</button>
+        <p id="hur"></p>
+        <p id="cnt"></p>
+
+        <p id="result"></p>
+    </div>
+    </div>
+
+
+    <script>
+        const a = Math.floor(Math.random() * 1000 + 1);
+        document.getElementById('num').textContent = a; // Display the random number
+
+        let count = 0;
+            document.getElementById('btn').addEventListener('click' ,()=>{
+
+                let num = document.getElementById('guessInput').value;
+                document.getElementById('hur').textContent = `you entered ${num}`;
+
+
+           
+           
+            if (num == a) {
+                document.getElementById('result').textContent = "You are right!";
+            } else if (num > a) {
+                document.getElementById('result').textContent = "Your guess is too high.";
+            } else {
+                document.getElementById('result').textContent = "Your guess is too low.";
+            }
+            count++;
+            document.getElementById('cnt').textContent = `you have guessed ${count} times`;
+
+                
+            })
+    </script>
+</body>
+</html>
