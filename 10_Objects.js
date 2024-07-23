@@ -71,21 +71,21 @@ const user= {
 
 
 // 7.Generating keys using object
-console.log(Object.keys(user))
-console.log(Object.values(user))
-console.log(Object.entries(user))
+// console.log(Object.keys(user))
+// console.log(Object.values(user))
+// console.log(Object.entries(user))
 
 
 // 8. Object destruturing
 
-const course ={
-    coursename: "js",
-    price : 999,
-    InstructorName : "Pricne"
-}
+// const course ={
+//     coursename: "js",
+//     price : 999,
+//     InstructorName : "Pricne"
+// }
 
-const {InstructorName} = course
-const {InstructorName:Is1} = course
+// const {InstructorName} = course // now we dont have to wrte course.instuctorName we canus it directly
+// const {InstructorName:Is1} = course // we can also reame it
 
-console.log(InstructorName)
-console.log(Is1)
+// console.log(InstructorName)
+// console.log(Is1)
