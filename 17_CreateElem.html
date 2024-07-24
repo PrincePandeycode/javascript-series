@@ -6,23 +6,60 @@
     <title>Creating new element</title>
 </head>
 <body>
-    
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
 </body>
 
 <script>
-    let div = document.createElement('div')
-    div.setAttribute("class","main")
-    div.id = 24
-    console.log(div)
-    div.style.backgroundColor = "red"
-    div.style.color = "white"
-    div.style.height = "100px";
+    // let div = document.createElement('div')
+    // div.setAttribute("class","main")
+    // div.id = 24
+    // console.log(div)
+    // div.style.backgroundColor = "red"
+    // div.style.color = "white"
+    // div.style.height = "100px";
 
-    let txt1 = document.createTextNode("this is created throgh javascript")
-    div.appendChild(txt1)
+    // let txt1 = document.createTextNode("this is created throgh javascript")
+    // div.appendChild(txt1)
 
     // div.innerText.style.backgroundColor = "green"
 
-    document.body.appendChild(div)
+    // document.body.appendChild(div)
+
+    //not a good way
+     function addChil(lamg){
+        let li= document.createElement('li')
+        li.innerText = `${lamg}`
+        document.querySelector('.language').appendChild(li)
+     }
+     addChil("python")
+
+     //preferres wy
+     function addOptiChild(lang){
+        let l = document.createElement('li')
+        l.appendChild(document.createTextNode(lang))
+
+        document.querySelector('.language').appendChild(l)
+
+     }
+
+     addOptiChild("typeScript")
+
+     //editin 
+     let edite = document.querySelector("li:nth-child(2)")
+    //  1.
+    //  edite.innerHTML= "golang"
+    // 2.
+    // edite.outerHTML = '<li>GOlang</li>'
+    // 3.
+    let ad = document.createElement('li')
+    ad.textContent = "GOOLANG"
+    edite.replaceWith(ad)
+    
+    // 4. removng Element
+    let lastR = document.querySelector('li:last-child')
+    lastR.remove()
+
 </script>
 </html>
