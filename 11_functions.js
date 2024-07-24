@@ -115,6 +115,6 @@
 //     console.log("DB cnnected")
 // })();
 
-((name) =>{
-    console.log(`DB CONNECTED ${name}`)
-})("students");
+// ((name) =>{
+//     console.log(`DB CONNECTED ${name}`)
+// })("students");

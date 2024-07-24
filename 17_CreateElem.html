@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating new element</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let div = document.createElement('div')
+    div.setAttribute("class","main")
+    div.id = 24
+    console.log(div)
+    div.style.backgroundColor = "red"
+    div.style.color = "white"
+    div.style.height = "100px";
+
+    let txt1 = document.createTextNode("this is created throgh javascript")
+    div.appendChild(txt1)
+
+    // div.innerText.style.backgroundColor = "green"
+
+    document.body.appendChild(div)
+</script>
+</html>
