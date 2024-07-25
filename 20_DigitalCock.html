@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital CLock</title>
+    <style>
+        body{
+            height: 100vh;
+            background-color: rgb(27, 27, 27);
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .time{
+            font-size: 46px;
+            border: 2px solid white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>your locale time </h1>
+    <div class="time"></div>
+</body>
+
+<script>
+    let clock = document.querySelector('.time')
+
+    setInterval(function(){
+        let t = new Date()
+        clock.innerHTML = t.toLocaleTimeString()
+    },1000)
+</script>
+</html>
