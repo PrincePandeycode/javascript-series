@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button id="stop">STop</button>
+<button class="start">start</button>
+</body>
+
+<script>
+
+    // let printcon= function(){
+    //     console.log("started : ",Date.now())
+    // }
+
+    // let stopme;
+    // let start = document.getElementById('start')
+    // start.addEventListener('click',function(){
+    //    stopme= setInterval(printcon,1000)
+    // })
+
+
+    // let stop = document.getElementById('stop')
+    // stop.addEventListener('click',function(){
+    //     clearInterval(stopme)
+    //     console.log("stopped")
+    // })
+
+    //or with class , getElementsByClassName it returns a HTMLCollection
+
+    let printcon= function(){
+        console.log("started : ",Date.now())
+    }
+
+    let stopit;
+    let starti = document.getElementsByClassName('start')
+   starti[0].addEventListener('click',function(){
+     stopit = setInterval(printcon,1000)
+   })
+   
+
+    let stopi = document.querySelector('#stop')
+    stopi.addEventListener('click',function(){
+        clearInterval(stopit)
+        console.log("stopped")
+    })
+</script>
+</html>
