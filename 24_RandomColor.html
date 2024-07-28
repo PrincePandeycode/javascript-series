@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COlor changer</title>
+</head>
+<body>
+    <h1>Color changer</h1>
+    <button id="stop">Stop</button>
+    <button id="start">start</button>
+</body>
+
+<script>
+    const getColor = function(){
+        const val = '0123456789ABCDEF'
+        let color = '#'
+
+        for(let i = 0;i<6;i++){
+            color+= val[Math.floor(Math.random()*16)]
+        }
+        return color
+    }
+
+    let changeCol = function(){
+        document.body.style.backgroundColor = getColor()
+    }
+    let interValID;
+    
+
+    let start = document.getElementById('start')
+    start.addEventListener('click',function(){
+       if(interValID == null){
+            interValID= setInterval(changeCol,500)
+       }
+    })
+
+    let stop = document.getElementById('stop')
+    stop.addEventListener('click',function(){
+        clearInterval(interValID)
+        interValID = null  // to stop running intervals
+
+    })
+
+  
+</script>
+</html>
