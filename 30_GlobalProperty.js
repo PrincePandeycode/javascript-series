@@ -28,3 +28,30 @@ String.prototype.truelen = function(){
 let namee = "prince    "
 console.log(namee.length)
 namee.truelen()
+
+
+// Inheritance
+
+let student = {
+    Name: "Prince",
+}
+
+let Teacher= {
+    makeVideo:true
+}
+
+
+let assistant = {
+    makeAssgnments:"js ",
+    __proto__:Teacher
+}
+
+
+let qaAsst = {
+    SolveProblem:true
+}
+qaAsst.__proto__ = assistant  //Old way
+
+Object.setPrototypeOf(Teacher,student)
+
+console.log(Teacher.Name)
