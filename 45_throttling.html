@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>throttling</title>
+</head>
+<body>
+    <input type="text" id="i22" onkeyup="goodInterval()">
+
+    <p id="eve"></p>
+</body>
+<script>
+   let box=  document.getElementById('eve')
+
+   let ip22 = document.getElementById('i22')
+
+    let count = 0;
+    function saycount(){
+        box.innerHTML += `<br> ${ip22.value}`
+    }
+
+    function throttle(func,interval){
+        let flag = true
+        return function(){
+            if(flag){
+                func.apply(this,arguments)
+                flag = false
+                
+
+                setTimeout(() => {
+                    flag= true
+                    ip22.removeAttribute('disabled');
+                    
+                }, interval);
+            }
+            else return;
+        }
+    }
+
+    let goodInterval = throttle(saycount,200)
+    
+</script>
+</html>

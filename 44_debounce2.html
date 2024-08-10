@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search" />
+</body>
+<script>
+function debounce(func, delay) {
+    let timer;
+    return function() {
+        clearTimeout(timer); // Clear any existing timer
+        timer = setTimeout(() => {
+            func.apply(this, arguments); // Set a new timer to call the function
+        }, delay);
+    };
+}
+
+// Usage Example:
+const searchInput = document.getElementById('search');
+const debouncedSearch = debounce(function(query) {
+    console.log('Searching for:', query);
+}, 300);
+
+searchInput.addEventListener('input', function(event) {
+    debouncedSearch(event.target.value);
+});
+
+</script>
+</html>
