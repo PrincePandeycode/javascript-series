@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+
+    <input type="text" id="inpt" onkeyup="bestFunc()">
+    
+</body>
+
+<script>
+    let count = 0;
+    function gtmsg(){
+        console.log("fetching data ...", count++)
+    }
+
+    let debouncef = (func,delay)=>{
+        let timer ;
+        return function(){
+
+            clearTimeout(timer)
+           timer = setTimeout(()=>{
+                func.apply(this, arguments)
+            },delay)
+        }
+    }
+
+    let bestFunc = debouncef(gtmsg,500)
+
+</script>
+</html>
