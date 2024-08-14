@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            border:3px solid black;
+            height: 300px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h4> enter a id toetch data:</h4>
+    <input type="number" id="inpt">
+   
+    <button id="sbmit">FETCH</button>
+
+   <br>
+
+   
+
+
+    <br>
+
+    <h4>Submit Your data:</h4><br>
+    <form id="dataForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+        
+        <label for="body">completed:</label>
+        <textarea id="completed" name="completed"></textarea><br><br>
+        
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" name="userId"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br> <div id="box" ></div>
+</body>
+<script>
+
+// 1.getting data from an url
+   
+    let box = document.getElementById("box")
+    document.getElementById("sbmit").addEventListener('click',()=>{
+
+        let formval = document.getElementById("inpt").value
+        let id = formval.trim()
+        url = `https://jsonplaceholder.typicode.com/todos/${id}`
+       let a =  fetch(url)
+      a.then((response) =>{
+            if(!response.ok){
+                throw new Error("response not okay")
+            }
+            return response.json()
+    
+           })
+          .then((data )=>{
+        
+        let chunk = `
+            userId: ${data.userId}<br> id: ${data.id},<br> title: ${data.title},<br> completed: ${data.completed}
+        `
+        box.innerHTML = chunk
+      })
+      .catch((e)=>{
+        box.innerHTML = `somthng wrong bro ${e}`
+      })
+    })
+
+// 2. posting data to a server
+    document.getElementById("dataForm").addEventListener('submit',(e)=>{
+        e.preventDefault()
+            let titleF= document.getElementById('title').value
+            let userIdF = document.getElementById('userId').value
+            let completedF = document.getElementById('completed').value
+
+        let data= {
+            userId : userIdF,
+            title : titleF,
+            completed : completedF,
+        }
+        
+        url = `https://jsonplaceholder.typicode.com/todos`
+       let a =  fetch(url,{
+        method:'POST',
+        headers : {
+            'Content-Type': 'application/json'
+
+        },
+        body:JSON.stringify(data)
+        
+       })
+      a.then((response) =>{
+            if(!response.ok){
+                throw new Error("response not okay")
+            }
+            return response.json()
+    
+           })
+          .then((data )=>{
+        
+       document.getElementById('box').innerText = `Data Submitted: ${JSON.stringify(data)}`;
+       
+      })
+      .catch((e)=>{
+        box.innerHTML = `somthng wrong bro ${e}`
+      })
+    })
+
+
+
+</script>
+</html>

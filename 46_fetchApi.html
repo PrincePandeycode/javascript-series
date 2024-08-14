@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    enter a city name :
+    <input type="text" id="city">
+    <button id="bttn">Submit</button>
+
+    <div id="info"></div>
+</body>
+<script>
+    let box= document.getElementById('info')
+
+    let bttn = document.getElementById('bttn')
+    bttn.addEventListener('click',()=>{
+                let city = document.getElementById('city').value
+                let cname = city.trim()
+                if(cname === ''){
+                    box.innerHTML = '<span>Enter a  valid city name </span>'
+                }
+                else{
+                     box.innerHTML = "loading ...."
+                    let url = `https://goweather.herokuapp.com/weather/${cname}`
+                    let p1 = fetch(url,{
+                                method: 'GET', // or 'POST', 'PUT', etc.
+                                headers: {
+                                    // 'Content-Type': 'application/json',
+                                    // 'Authorization': 'Bearer your_token_here',
+                                    // 'Accept': 'application/json'
+                                }
+                                })
+                    p1.then((response) =>{
+
+                        if(!response.ok){
+                            throw new Error('Network response was not ok');
+                            
+                        }
+                       
+                        return response.json()
+                    })
+                    .then((data) =>{
+                        console.log(data)
+
+                     let chunk = `
+                        
+                                description= ${data.description} <br>
+                                temperature = ${data.temperature} <br>
+                                wind speed= ${data.wind}<br>
+
+                     `
+                     box.innerHTML = chunk
+
+
+                        
+                    }).catch((e) =>{
+                        box.innerHTML = `server is down a the moment <br> ${e}`
+
+                    })
+            }
+
+    })
+   
+</script>
+</html>
