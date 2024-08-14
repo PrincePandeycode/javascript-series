@@ -6,6 +6,20 @@
     <title>Document</title>
        <!-- Bootstrap CSS -->
        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+       <style>
+        /* .full-width-card {
+            width: 100%;
+            margin-bottom: 15px;
+            border: 2px solid black;
+        } */
+        #box {
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            flex: 1;
+        }
+    </style>
 
 </head>
 <body>
@@ -49,7 +63,7 @@
 
     <!--  -->
 
-      <DIV class="container mt-5"> <H2>NOTES</H2></DIV>
+      <DIV class="container mt-5"> <H2>NOTES:</H2></DIV>
 
     <div id="box" class="container mt-2">
        
@@ -102,7 +116,8 @@
         box.innerHTML = '';
         for(note of val){
             box.innerHTML += `
-                                <div class="card" style="width: 40%; border:2px solid black;" id="${note.note_id}">
+            <ul><li>
+                                <div class="card" style=" margin-bottom:15px; border:2px solid black;" id="${note.note_id}">
                                         <div class="card-body">
                                             <h5 class="card-title">${(note.Heading)}</h5>
                                             <p class="card-text">${note.Note}</p>
@@ -110,6 +125,7 @@
                                              <button type="button" class="btn btn-success edit_btn" >edit Notes</button>
                                         </div>
                                 </div>
+                                </li></ul>
     `
 
         }
@@ -169,7 +185,7 @@
         saveButton.classList.add('btn', 'btn-success', 'Save_btn');
 
 // 4.
-         let cardBody = document.querySelector('.card-body')
+         let cardBody = card.querySelector('.card-body')
          cardBody.innerHTML = ""
          cardBody.appendChild(headingi)
          cardBody.appendChild(notei)
